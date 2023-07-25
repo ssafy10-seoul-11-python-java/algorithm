@@ -1,30 +1,15 @@
-def max_number():
-    max = 0
-    if len(minus) > 1:
-        for i in range(len(minus) - 1):
-            temp = minus[i] + minus[i + 1]
-            if temp > max:
-                max = temp
-                a = minus[i]
-                b = minus[i + 1]
-        minus.remove(a)
-        minus.remove(b)
-        minus.append(max)
-        max_number()
+S = list(input()) #문자열
 
 
-string_number = input()
-string_number = string_number.split("-")
 
-for i in range(len(string_number)):
-    if "+" in string_number[i]:
-        minus = list(map(int, string_number[i].split("+")))
-        max_number()
-        string_number[i] = int(minus[0])
-    else:
-        string_number[i] = int(string_number[i])
+def espell():
+    if S == S[::-1]:  # 주어진 문자열이 이미 팰린드롬인 경우
+        return len(S)
+    for i in range(len(S)):
+        if S[i:] == S[i:][::-1]:
+            return len(S) + i
+    # 겹치는 문자열 아예 없을때
+    return len(S) + len(S[-2::-1])
 
-result = string_number[0]
-for n in string_number[1:]:
-    result = result - n
-print(result)
+
+print(espell())
