@@ -9,9 +9,9 @@ if n == 2:
 else:
     heapq.heapify(cards)
     for i in range(m):
-        a = heapq.heappop(cards)
-        a += heapq.heappop(cards)
-        heapq.heappush(cards, a)
-        heapq.heappush(cards, a)
+        a = cards[0]
+        a += min(cards[1],cards[2])
+        heapq.heappushpop(cards,a)
+        heapq.heappushpop(cards,a)
 
     print(sum(cards))
